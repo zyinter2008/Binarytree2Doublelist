@@ -18,13 +18,10 @@ BSTreeNode *pIndex = NULL;
 
 int main() {
 	BSTreeNode *root = NULL;
-	addValue2BsTree(&root, 10);
-	addValue2BsTree(&root, 6);
-	addValue2BsTree(&root, 14);
-	addValue2BsTree(&root, 4);
-	addValue2BsTree(&root, 8);
-	addValue2BsTree(&root, 12);
-	addValue2BsTree(&root, 16);
+	int data[] = { 10, 6, 14, 4, 8, 12, 16 };
+	for (int i = 0; i < 7; i++) {
+		addValue2BsTree(&root, data[i]);
+	}
 	printValue(root);
 	sortTree(root);
 	return 0;
@@ -51,14 +48,14 @@ void sortTree(BSTreeNode *root) {
 		return;
 	}
 
-	if ((root)->m_pLeft != NULL) {
-		sortTree((root)->m_pLeft);
+	if (root->m_pLeft != NULL) {
+		sortTree(root->m_pLeft);
 	}
 
 	convert2Doublelist(root);
 
-	if ((root)->m_pRight != NULL) {
-		sortTree((root)->m_pRight);
+	if (root->m_pRight != NULL) {
+		sortTree(root->m_pRight);
 	}
 }
 
@@ -73,12 +70,12 @@ void printValue(BSTreeNode *root) {
 
 void convert2Doublelist(BSTreeNode *root) {
 
-	(root)->m_pLeft = pIndex;
+	root->m_pLeft = pIndex;
 	if (pIndex == NULL) {
 		pHead = root;
 	} else {
 		pIndex->m_pRight = root;
 	}
 	pIndex = root;
-	printf("sort vlaue is [%d]\n", (root)->m_nValue);
+	printf("sort vlaue is [%d]\n", root->m_nValue);
 }
